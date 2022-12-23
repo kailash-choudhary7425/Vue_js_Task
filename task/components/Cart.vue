@@ -1,17 +1,17 @@
 <template>
   <div class="container">
     <div class="text-success my-4 text-center"><h5>My Cart</h5></div>
-    <div class="row">
-      <div class="col" v-for="data in cartData" :key="data.id">
-        <div>
+    <div class="row gx-2">
+      <div class="col border" v-for="data in cartData" :key="data.id">
+        <div class="p-2 text-center">
           <img :src="data.image" alt="">
         </div>
-        <p>{{data.name}}</p>
+        <p class="text-center">{{data.name}}</p>
         <p class="text-center">${{data.price}}</p>
-          <div class="d-flex text-center ps-5">
-            <button class="m-2" @click="increment(data)">+</button>
-            <input type="number" @input="changeQty(data)" min="0" v-model="data.qty" class="form-control qty mt-2" />
-            <button class="m-2" :disabled="data.qty<1"  @click="decrement(data)">-</button>
+          <div class="d-flex text-center flex-row-reverse justify-content-center align-items-center mb-2">
+            <button class="px-4 py-2 mt-0 ms-1" @click="increment(data)">+</button>
+            <input type="number" @input="changeQty(data)" min="0" v-model="data.qty" class="form-control qty" />
+            <button class="px-4 py-2 mt-0 me-1" :disabled="data.qty<1"  @click="decrement(data)">-</button>
           </div>
       </div>
     </div>
@@ -110,6 +110,10 @@ export default {
 </script>
 
 <style scoped>
+
+.row{ 
+  gap: 20px;
+}
 .imagePreviewWrapper {
     border: 1px solid rgb(211, 198, 198);
     border-radius: 3px;
